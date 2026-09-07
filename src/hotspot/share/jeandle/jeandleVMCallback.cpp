@@ -116,7 +116,7 @@ uintptr_t record_klass_metadata(ciKlass* klass) {
   return reinterpret_cast<uintptr_t>(encoding);
 }
 
-bool constant_field(int oop_id, int offset, ciField** field, ciConstant* con, int* stable_dimension) {
+bool constant_field(int oop_id, int offset, ciField*& field, ciConstant& con, int& stable_dimension) {
   ciObject* base_oop = oop_by_id(oop_id);
   if (base_oop == nullptr || base_oop->is_null_object()) {
     return false;
