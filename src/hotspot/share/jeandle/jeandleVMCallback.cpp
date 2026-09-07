@@ -135,8 +135,8 @@ bool constant_field(int oop_id, int offset, ciField*& field, ciConstant& con, in
       return false;
     }
 
-    *con = value;
-    *stable_dimension = base_stable_dimension - 1;
+    con = value;
+    stable_dimension = base_stable_dimension - 1;
     return true;
   }
 
@@ -172,8 +172,8 @@ bool constant_field(int oop_id, int offset, ciField*& field, ciConstant& con, in
     return false;
   }
 
-  *field = found;
-  *con = value;
+  field = found;
+  con = value;
   return true;
 }
 
@@ -398,7 +398,7 @@ JeandleVMCallback::get_constant_field(int oop_id, int offset) {
   ciField* field = nullptr;
   ciConstant con;
   int stable_dimension = 0;
-  if (!constant_field(oop_id, offset, &field, &con, &stable_dimension))
+  if (!constant_field(oop_id, offset, field, con, stable_dimension))
     return {-1, 0};
 
   int basic_type;
